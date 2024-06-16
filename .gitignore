@@ -1,0 +1,12 @@
+.terraform*
+terraform.state
+terraform.tfstate
+terraform.state.backup
+**/logs
+**/*.retry
+**/*.log
+*.pem
+*.pub
+**/*.pub
+**/*.pem
+*.log

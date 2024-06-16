@@ -1,0 +1,70 @@
+# jenkins.yml
+- name: Install Jenkins
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install all available updates
+      apt: 
+        upgrade: dist
+        update_cache: yes
+
+    - name: Install Java OpenJDK 17
+      apt: 
+        name: openjdk-17-jre 
+        state: present 
+        update_cache: yes
+
+    - name: Import Jenkins GPG key
+      become: yes
+      shell: |
+        curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+    - name: Add Jenkins repository to sources.list
+      become: yes
+      shell: |
+        echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+    - name: Update apt cache
+      become: yes
+      apt:
+        update_cache: yes
+
+    # - name: Ensure Jenkins apt repository key is installed  # https://github.com/geerlingguy/ansible-role-jenkins/issues/378
+    #   apt_key: 
+    #     url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key 
+    #     state: present
+    
+    # - name: Update apt package cache
+    #   apt:
+    #     update_cache: yes
+
+    # - name: Ensure the repository is configured        # https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+    #   apt_repository: 
+    #     repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/" 
+    #     state: present
+
+    - name: Install Jenkins
+      apt: 
+        name: jenkins 
+        state: present
+        update_cache: yes
+
+    - name: Start & Enable Jenkins
+      service: 
+         name: jenkins 
+         state: started
+         enabled: yes
+
+    - name: Sleep for 30 seconds and continue with play
+      wait_for: 
+        timeout: 30
+
+    - name: Get init password Jenkins
+      shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+      changed_when: false
+      register: result
+
+    - name: Print init password Jenkins
+      debug:
+        var: result.stdout     
