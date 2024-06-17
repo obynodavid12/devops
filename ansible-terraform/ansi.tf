@@ -52,7 +52,7 @@ resource "null_resource" "dev" {
                sleep 60;
                export ANSIBLE_HOST_KEY_CHECKING=False;
                ansible -i myinv all -m ping -u ubuntu --private-key mykey.pem;
-	             ansible-playbook -i myinv jenkins.yaml --user ubuntu --key-file mykey.pem
+	       ansible-playbook -i myinv jenkins.yaml --user ubuntu --key-file mykey.pem
               EOT
   }
 }
