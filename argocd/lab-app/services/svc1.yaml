@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: lab-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: lab-app
+  ports:
+  # Default port used by the image
+  - port: 80
+  targetPort: 80
