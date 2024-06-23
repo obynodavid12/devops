@@ -5,20 +5,18 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  source:
+    repoURL: https://github.com/obynodavid12/devops.git
+    targetRevision: HEAD
+    path: argocd/lab-app
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: lab-app
   syncPolicy: 
     automated:
       prune: false
-      selfHeal: false  
-  sources:
-    - repoURL: https://github.com/obynodavid12/devops.git
-      path: argocd/lab-app
-      targetRevision: HEAD
-      # targetRevision: 8.5.1
+      selfHeal: false
 
-    - repoURL: https://github.com/obynodavid12/argocd-demo.git
-      path: argocd/lab-app
-      targetRevision: HEAD
       

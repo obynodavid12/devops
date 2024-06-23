@@ -31,6 +31,8 @@ fi
 
 # Command to apply the installation YAML file to the "argocd" namespace
 kubectl apply -n argocd -f "${INSTALL_YAML_PATH}"
+# kubectl delete -n argocd -f "${INSTALL_YAML_PATH}"
 
 # Command to apply the argocd-app YAML file to the "argocd" namespace
 kubectl apply -n argocd -f "${ARGOCD_APP_YAML_PATH}"
+# kubectl delete -n argocd -f "${ARGOCD_APP_YAML_PATH}"
