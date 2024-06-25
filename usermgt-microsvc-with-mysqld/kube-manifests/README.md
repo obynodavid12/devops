@@ -54,13 +54,17 @@ https://www.postman.com/downloads/
 
 # Import Project to Postman
 Import the postman project AWS-EKS-Masterclass-Microservices.postman_collection.json 
-Create Environment in postman
+
+Create Environment in Postman
+
 Go to Settings -> Click on Add
+
 Environment Name: UMS-NodePort
 Variable: url
 Initial Value: http://WorkerNode-Public-IP:31231  # Since I made use of Kind k8s cluster http://127.0.0.1:30950
 Current Value: http://WorkerNode-Public-IP:31231  # Since I made use of Kind k8s cluster http://127.0.0.1:30950
 Click on Add
+
 Test User Management Services
 Select the environment before calling any API
 Health Status API
