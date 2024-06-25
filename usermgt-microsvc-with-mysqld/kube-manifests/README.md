@@ -3,7 +3,7 @@
 kind create cluster --config kind-nodePort.yaml
 
 # How to log in to kind-control-plane node
-==>docker exec -it kind-control-plane bash
+docker exec -it kind-control-plane bash
 
 # Listing the servers created
 grep server ~/.kube/config
@@ -31,14 +31,12 @@ kind-worker2         Ready    <none>          60m   v1.30.0
 kind delete cluster --name kind
 kind delete cluster --name mycluster
 
-
 # SSH INTO KIND NODES -https://stackoverflow.com/questions/69108075/how-to-ssh-into-kind-cluster-nodes-with-containerd-runtime
 docker ps -a  --(Take a look at the NAMES column - here are nodes names used in Kubernetes)
 
 docker exec -it kind-worker2 sh   _(make sure this path is created on node kind-worker2 "mkdir -p /mnt/disks/vol1")
 
-# ls
-bin  boot  dev  etc  home  kind  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+# ls -- bin  boot  dev  etc  home  kind  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 
 # ip a  --(Check if the IP address matches the IP address from the kubectl get nodes command)
 
@@ -52,7 +50,6 @@ k -n dev3 get sc,pv,pvc  - Created PV config due to using local storage rather t
 k -n dev3 port-forward service/usermgmt-restapp-service 8095:8095
 
 curl -v http://127.0.0.1:8095/usermgmt/health-status or curl -v http://localhost:8095/usermgmt/health-status
-
 
 # Download Postman client
 https://www.postman.com/downloads/
