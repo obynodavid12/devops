@@ -134,64 +134,6 @@ mysql> use usermgmt;
 mysql> show tables;
 mysql> select * from users;
 
-mysql> use usermgmt
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-mysql> show tables;
-+--------------------+
-| Tables_in_usermgmt |
-+--------------------+
-| users              |
-+--------------------+
-1 row in set (0.00 sec)
-
-mysql> select * from users;
-+----------+---------------+---------+-----------+----------+--------------------------------------------------------------+------------+
-| username | email         | enabled | firstname | lastname | password                                                     | role       |
-+----------+---------------+---------+-----------+----------+--------------------------------------------------------------+------------+
-| admin1   | obi@gmail.com |        | fname1    | lname1   | $2a$04$6YPiw1CLaPB4Rky15nIUdODHyXKy3uOVX6l4WCl6TG6cOArgZUxMe | ROLE_ADMIN |
-+----------+---------------+---------+-----------+----------+--------------------------------------------------------------+------------+
-1 row in set (0.00 sec)
-
-mysql> select * from users;
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-| username   | email                  | enabled | firstname  | lastname   | password                                                     | role       |
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-| admin1     | obi@gmail.com          |        | fname1     | lname1     | $2a$04$6YPiw1CLaPB4Rky15nIUdODHyXKy3uOVX6l4WCl6TG6cOArgZUxMe | ROLE_ADMIN |
-| microtest1 | dkalyanreddy@gmail.com |        | MicroFName | MicroLname | $2a$04$tN2m2OWFB/iRJuW4vu45kuAfAcq/sdhLi//suuTv5cti1lH3csNh2 | ROLE_ADMIN |
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-2 rows in set (0.00 sec)
-
-mysql> select * from users;  # Added from Postman
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-| username   | email                  | enabled | firstname   | lastname    | password                                                     | role       |
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-| admin1     | obi@gmail.com          |        | fname1      | lname1      | $2a$04$6YPiw1CLaPB4Rky15nIUdODHyXKy3uOVX6l4WCl6TG6cOArgZUxMe | ROLE_ADMIN |
-| microtest1 | dkalyanreddy@gmail.com |        | MicroFName  | MicroLname  | $2a$04$tN2m2OWFB/iRJuW4vu45kuAfAcq/sdhLi//suuTv5cti1lH3csNh2 | ROLE_ADMIN |
-| sql-test   | david@gmail.com        |        | MicroFName1 | MicroLname1 | $2a$04$Ys1PxkN3FO327Nh5PCkWIOl9J0CaagA.o73O0QvwipBy817Kn0gzG | ROLE_ADMIN |
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-3 rows in set (0.00 sec)
-mysql> select * from users;  # updated from Postman
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-| username   | email                  | enabled | firstname   | lastname    | password                                                     | role       |
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-| admin1     | dad@gmail.com          |        | fname3      | lname3      | $2a$04$6YPiw1CLaPB4Rky15nIUdODHyXKy3uOVX6l4WCl6TG6cOArgZUxMe | ROLE_ADMIN |
-| microtest1 | dkalyanreddy@gmail.com |        | MicroFName  | MicroLname  | $2a$04$tN2m2OWFB/iRJuW4vu45kuAfAcq/sdhLi//suuTv5cti1lH3csNh2 | ROLE_ADMIN |
-| sql-test   | david@gmail.com        |        | MicroFName1 | MicroLname1 | $2a$04$Ys1PxkN3FO327Nh5PCkWIOl9J0CaagA.o73O0QvwipBy817Kn0gzG | ROLE_ADMIN |
-+------------+------------------------+---------+-------------+-------------+--------------------------------------------------------------+------------+
-3 rows in set (0.00 sec)
-
-mysql> select * from users;  # deleted sql-test from Postman
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-| username   | email                  | enabled | firstname  | lastname   | password                                                     | role       |
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-| admin1     | dad@gmail.com          |        | fname3     | lname3     | $2a$04$6YPiw1CLaPB4Rky15nIUdODHyXKy3uOVX6l4WCl6TG6cOArgZUxMe | ROLE_ADMIN |
-| microtest1 | dkalyanreddy@gmail.com |        | MicroFName | MicroLname | $2a$04$tN2m2OWFB/iRJuW4vu45kuAfAcq/sdhLi//suuTv5cti1lH3csNh2 | ROLE_ADMIN |
-+------------+------------------------+---------+------------+------------+--------------------------------------------------------------+------------+
-2 rows in set (0.00 sec)
-
 # Step-06: Clean-Up
 # Delete All
 kubectl delete -f kube-manifests/
