@@ -37,6 +37,11 @@ docker ps -a  --(Take a look at the NAMES column - here are nodes names used in 
 
 docker exec -it kind-worker2 sh   _(make sure this path is created on node kind-worker2 "mkdir -p /mnt/disks/vol1")
 
+# ls
+bin  boot  dev  etc  home  kind  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+# ip a  --(Check if the IP address matches the IP address from the kubectl get nodes command)
+
 # Usermgmt-microsvc-with-mysqld
 k apply -f kube-manifest/
 
