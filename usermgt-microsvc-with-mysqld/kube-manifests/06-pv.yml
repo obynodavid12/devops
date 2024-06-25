@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/vol1     # make sure this path is created on node kubenode02 "mkdir -p /mnt/disks/vol1"
+    path: /mnt/disks/vol1     # make sure this path is created on node kind-worker2 "mkdir -p /mnt/disks/vol1"
   nodeAffinity:
     required:
       nodeSelectorTerms:

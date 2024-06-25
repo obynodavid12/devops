@@ -1,0 +1,12 @@
+---
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kind-control-plane
+
+
+# kubectl -n ingress-nginx patch deployment ingress-nginx-controller --patch "$(cat patch.yaml)"
+
+# kubectl  -n ingress-nginx patch deployment ingress-nginx-controller -p '{"spec": {"template": {"spec": {"nodeSelector": {"kubernetes.io/hostname": "kind-control-plane"}}}}}'
+

@@ -2,6 +2,41 @@
 # Create Cluster
 kind create cluster --config kind-nodePort.yaml
 
+# How to log in to kind-control-plane node
+==>docker exec -it kind-control-plane bash
+
+# Listing the servers created
+grep server ~/.kube/config
+server: https://0.0.0.0:38247
+server: https://127.0.0.1:43481
+
+# GET CONTEXT
+kubectl config get-contexts
+
+# USE CONTEXT
+kubectl config use-context kind-kind
+Switched to context "kind-kind".
+
+# GET CLUSTER
+kind get clusters
+kind
+
+kubectl get nodes --context kind-kind
+NAME                 STATUS   ROLES           AGE   VERSION
+kind-control-plane   Ready    control-plane   61m   v1.30.0
+kind-worker          Ready    <none>          60m   v1.30.0
+kind-worker2         Ready    <none>          60m   v1.30.0
+
+# DELETE CLUSTER
+kind delete cluster --name kind
+kind delete cluster --name mycluster
+
+
+# SSH INTO KIND NODES -https://stackoverflow.com/questions/69108075/how-to-ssh-into-kind-cluster-nodes-with-containerd-runtime
+docker ps -a  --(Take a look at the NAMES column - here are nodes names used in Kubernetes)
+
+docker exec -it kind-worker2 sh   _(make sure this path is created on node kind-worker2 "mkdir -p /mnt/disks/vol1")
+
 # Usermgmt-microsvc-with-mysqld
 k apply -f kube-manifest/
 
@@ -9,10 +44,10 @@ k -n dev3 get pods,svc
 k -n dev3 get sc,pv,pvc  - Created PV config due to using local storage rather than ebs storage
 
 # In order to access the apps, run the below command according to the Pod svc name
-
 k -n dev3 port-forward service/usermgmt-restapp-service 8095:8095
 
 curl -v http://127.0.0.1:8095/usermgmt/health-status or curl -v http://localhost:8095/usermgmt/health-status
+
 
 # Download Postman client
 https://www.postman.com/downloads/
