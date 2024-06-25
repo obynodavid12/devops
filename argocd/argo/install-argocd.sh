@@ -18,7 +18,7 @@
 
 # Define the file paths in variables
 INSTALL_YAML_PATH="$HOME/devops/argocd/argo/install.yaml"
-ARGOCD_APP_YAML_PATH="$HOME/devops/argocd/argo/multi-repo.yaml"
+ARGOCD_APP_YAML_PATH="$HOME/devops/argocd/argo/argocd-app.yaml"
 
 # Check if the namespace "argocd" exists
 if kubectl get namespace argocd &> /dev/null; then

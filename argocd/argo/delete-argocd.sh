@@ -2,7 +2,7 @@
 
 # Define the file paths in variables
 INSTALL_YAML_PATH="$HOME/devops/argocd/argo/install.yaml"
-ARGOCD_APP_YAML_PATH="$HOME/devops/argocd/argo/multi-repo.yaml"
+ARGOCD_APP_YAML_PATH="$HOME/devops/argocd/argo/argocd-app.yaml"
 
 # Command to delete the resources in the "argocd" namespace
 kubectl delete -n argocd -f "${INSTALL_YAML_PATH}"
