@@ -7,8 +7,6 @@ docker exec -it kind-control-plane bash
 
 # Listing the servers created
 grep server ~/.kube/config
-server: https://0.0.0.0:38247
-server: https://127.0.0.1:43481
 
 # GET CONTEXT
 kubectl config get-contexts
