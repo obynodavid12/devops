@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-mysql-pv-claim
+  name: local-mysql-pv-claim
   namespace: dev3
 spec:
   accessModes:

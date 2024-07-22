@@ -52,3 +52,13 @@ spec:
               port: 8095
             initialDelaySeconds: 60
             periodSeconds: 10
+          # resources:
+          #   requests:
+          #     cpu: "500m" 
+          #     memory: "128Mi"
+          #   limits:
+          #     cpu: "1000m"
+          #     memory: "500Mi"
+
+# resources.request not needed to be configured here as it is created with 00-namespace-limitrange-resourcequota.yml which 
+# will be tied to each of the pod containers created in dev3 

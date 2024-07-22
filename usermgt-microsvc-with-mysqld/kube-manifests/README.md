@@ -41,13 +41,23 @@ docker exec -it kind-worker2 sh   _(make sure this path is created on node kind-
 # Usermgmt-microsvc-with-mysqld
 k apply -f kube-manifest/
 
+k apply -f kube-manifest/ -n dev1 or dev2 or dev3   (Can use this when namespace is not hardcoded into each manifest files)
+
+k delete -f kube-manifest/ -n dev1 or dev2 or dev3
+
+k delete ns dev3 -- (this alone will delete all resources created in the dev1 namespace)
+
 k -n dev3 get pods,svc
 k -n dev3 get sc,pv,pvc  - Created PV config due to using local storage rather than ebs storage
+k -n dev3 get quota
 
 # In order to access the apps, run the below command according to the Pod svc name
 k -n dev3 port-forward service/usermgmt-restapp-service 8095:8095
 
 curl -v http://127.0.0.1:8095/usermgmt/health-status or curl -v http://localhost:8095/usermgmt/health-status
+
+# To see pods making use of a node
+k describe node kind-worker
 
 # Download Postman client
 https://www.postman.com/downloads/
